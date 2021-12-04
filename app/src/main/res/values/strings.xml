@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TaintedScore</string>
+    <string name="gameList">Games List</string>
+    <string name="playerStats">Player Stats</string>
+    <string name="actButtonAdd">Add</string>
+    <string name="desc">Just image for layout</string>
+    <string name="descSearch">      Search through BGG</string>
+    <string name="greet">Greetings</string>
+    <string name="tGames">Games: </string>
+    <string name="tPlays">Plays: </string>
+</resources>
