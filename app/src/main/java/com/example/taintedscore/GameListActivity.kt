@@ -2,6 +2,7 @@ package com.example.taintedscore
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,8 @@ class GameListActivity : AppCompatActivity(), GamesAdapter.OnItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_list)
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         searchGameButton = findViewById(R.id.addButtonReg)
         gamesRecycler = findViewById(R.id.gamesRecyclerView)
         gamesRecycler?.adapter = GamesAdapter(ExampleData().generateExampleList(), this)

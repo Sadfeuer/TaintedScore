@@ -13,16 +13,21 @@
         android:theme="@style/Theme.TaintedScore">
         <activity
             android:name=".PropGameActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".GameListActivity"/>
         <activity
             android:name=".AddNewGameActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".GameListActivity"/>
         <activity
             android:name=".PlayerStatsActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".GameListActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,6 +1,7 @@
 package com.example.taintedscore
 
 import android.os.Bundle
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
@@ -12,10 +13,14 @@ class PlayerStatsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_player_stats)
         val chartWL: AnyChartView = findViewById(R.id.pie_chart_wlrank)
         chartWL.setChart(setPieChart())
+
     }
+
 
     fun setPieChart(): Chart {
         val pie = AnyChart.pie()

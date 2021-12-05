@@ -3,6 +3,7 @@ package com.example.taintedscore.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -20,8 +21,10 @@ class GamesAdapter(
         View.OnClickListener {
 
         val povName: TextView = itemView.findViewById(R.id.recyclerItemName)
+        val povTotalGames: TextView = itemView.findViewById(R.id.recyclerItemTotalGames)
         val povWinrate: TextView = itemView.findViewById(R.id.recyclerItemWinrate)
         val povImage: ImageView = itemView.findViewById(R.id.imageViewCover)
+        val povButton: Button = itemView.findViewById(R.id.addPlayButton)
 
         init {
             itemView.setOnClickListener(this)
@@ -51,8 +54,13 @@ class GamesAdapter(
         val currentGame = gamesList[position]
         holder.povImage.setImageResource(currentGame.imageResource)
         holder.povName.text = currentGame.name
-        holder.povWinrate.text = currentGame.winrate
-    }
+        holder.povWinrate.text = "Winrate is " + currentGame.winrate
+        holder.povTotalGames.text = "Total games: " + 0
+        holder.povButton.setOnClickListener {
+            holder.povTotalGames.append("1")
+            }
+        }
+
 
     override fun getItemCount() = gamesList.size
 }
