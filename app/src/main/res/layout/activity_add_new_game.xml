@@ -6,19 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".AddNewGameActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="411dp"
-        android:layout_height="466dp"
-        android:text="TextView"
-        android:textColor="#42A5F5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchBGG"
-        app:layout_constraintVertical_bias="1.0" />
-
     <EditText
         android:id="@+id/searchBGG"
         android:layout_width="354dp"
@@ -30,6 +17,6 @@
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.049" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

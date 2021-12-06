@@ -29,8 +29,8 @@ class XmlPullParserHandler {
                     }
                     XmlPullParser.TEXT -> text = parser.text
                     XmlPullParser.END_TAG -> if
-                                                     (tagname.equals("name", ignoreCase = true)) {
-                        game?.name = text
+                            (tagname.equals("name", ignoreCase = true)) {
+                                game?.name = text!!
                     } else if (tagname.equals("yearpublished", ignoreCase = true)) {
                         game?.yearpublished = Integer.parseInt(text)
                     }
