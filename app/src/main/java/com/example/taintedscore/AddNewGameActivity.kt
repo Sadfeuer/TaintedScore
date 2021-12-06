@@ -2,7 +2,6 @@ package com.example.taintedscore
 
 import android.os.Bundle
 import android.widget.AutoCompleteTextView
-import android.widget.EditText
 import android.widget.SimpleAdapter
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -22,11 +21,11 @@ class AddNewGameActivity : AppCompatActivity() {
         setContentView(R.layout.activity_add_new_game)
         val actionBar: ActionBar? = supportActionBar
         actionBar?.setDisplayHomeAsUpEnabled(true)
-        val searchGame = findViewById<EditText>(R.id.searchBGG)
+        val searchGame = findViewById<AutoCompleteTextView>(R.id.autoCompleteTextView)
 
         extViewModel.value.searchLiveData.observe(this) {
-
-            val receivedList: List<SearchResponseData> = it as List<SearchResponseData>
+            val recList: List<Any> = it
+            val receivedList: List<SearchResponseData> = recList.filterIsInstance<SearchResponseData>()
             var lisSearchResItems = receivedList.map { item ->
                 item.toMap()
             }
@@ -39,12 +38,12 @@ class AddNewGameActivity : AppCompatActivity() {
                 intArrayOf(android.R.id.text1),
             )
 
-            val textView = findViewById<AutoCompleteTextView>(R.id.text)
-            textView.setAdapter(adapter)
+            //val textView = findViewById<AutoCompleteTextView>(R.id.text)
+            searchGame.setAdapter(adapter)
 
-            textView.setOnFocusChangeListener { _, bool ->
+            searchGame.setOnFocusChangeListener { _, bool ->
                 if (bool) {
-                    textView.showDropDown()
+                    searchGame.showDropDown()
                 }
             }
             Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
