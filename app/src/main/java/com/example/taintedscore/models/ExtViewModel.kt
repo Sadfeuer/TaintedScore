@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.taintedscore.bggExchenger.BggExchanger
 import com.example.taintedscore.bggExchenger.ClientHolder
+import com.example.taintedscore.data.SearchResponseData
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -16,8 +17,8 @@ class ExtViewModel : ViewModel() {
     private val bggExchanger = BggExchanger(ClientHolder.okHttpClient)
     private var searchJob: Job? = null
 
-    private val protSearchLiveData = MutableLiveData<List<Any>>()
-    val searchLiveData: LiveData<List<Any>> get() = protSearchLiveData
+    private val protSearchLiveData = MutableLiveData<List<SearchResponseData>>()
+    val searchLiveData: LiveData<List<SearchResponseData>> get() = protSearchLiveData
 
     private val protErrorLiveData = MutableLiveData<String>()
     val errorLiveData: MutableLiveData<String> get() = protErrorLiveData
@@ -38,7 +39,7 @@ class ExtViewModel : ViewModel() {
             val gamesResponse = bggExchanger.search(text.toString())
             if (gamesResponse.isSuccess) {
                 gamesResponse.getOrNull()?.let {
-                    protSearchLiveData.postValue(listOf(it))
+                    protSearchLiveData.postValue(it)
                 } ?: run {
                     protErrorLiveData
                         .postValue(gamesResponse.exceptionOrNull()?.message ?: "DATA ERROR")
