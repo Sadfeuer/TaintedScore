@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taintedscore.R
+import com.example.taintedscore.data.ReverseClickHolder
 import com.example.taintedscore.data.SearchResponseData
 
 class SearchAdapter(
@@ -25,6 +26,9 @@ class SearchAdapter(
             val position = adapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 listener.onItemClick(position)
+                val sRdata = receivedList[position]
+                ReverseClickHolder().neededData=sRdata
+
             }
         }
     }

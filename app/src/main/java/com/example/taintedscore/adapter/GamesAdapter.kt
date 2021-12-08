@@ -58,9 +58,8 @@ class GamesAdapter(
         holder.povTotalGames.text = "Total games: " + 0
         holder.povButton.setOnClickListener {
             holder.povTotalGames.append("1")
-            }
         }
-
+    }
 
     override fun getItemCount() = gamesList.size
 }
