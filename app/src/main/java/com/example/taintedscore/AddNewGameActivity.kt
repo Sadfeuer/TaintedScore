@@ -49,6 +49,9 @@ class AddNewGameActivity : AppCompatActivity(), SearchAdapter.OnItemClickListene
                 )
             )
             recyclerSearchRes.itemAnimator = DefaultItemAnimator();
+            for (i in recedList.indices) {
+                val incomingData = recedList.get(i)
+            }
         }
 
         extViewModel.value.errorLiveData.observe(this) {
@@ -65,20 +68,12 @@ class AddNewGameActivity : AppCompatActivity(), SearchAdapter.OnItemClickListene
     }
 
     override fun onItemClick(position: Int) {
-        //insertDataToDatabase()
-
         val toPropGameActivity = Intent(
             this,
             GameListActivity::class.java
         )
         startActivity(toPropGameActivity)
     }
-/*
-  private fun insertDataToDatabase() {
-        val insertionData = ReverseClickHolder().retriveData()
-        gamesViewModel.insert(insertionData)
-        Toast.makeText(this, insertionData.toString(), Toast.LENGTH_LONG).show()
-    }*/
 
 }
 

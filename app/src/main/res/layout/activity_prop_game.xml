@@ -7,10 +7,10 @@
     tools:context=".PropGameActivity">
 
     <TextView
-        android:id="@+id/recyclerItemName"
+        android:id="@+id/title_of_activity"
         android:layout_width="127dp"
         android:layout_height="54dp"
-        android:text="Name"
+        android:text="Ankh"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textColor="@color/purple_200"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,31 +55,18 @@
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="123dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="192dp"
         android:background="?attr/selectableItemBackground"
         android:minWidth="0dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
-        android:text="@string/AddPlay"
+        android:text="@string/AddLoss"
         android:textColor="@color/purple_500"
         app:backgroundTint="#151717"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.944"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewCover"
-        app:layout_constraintVertical_bias="0.0"
-        app:rippleColor="#1C2E2C" />
-
-    <com.anychart.AnyChartView
-        android:id="@+id/pie_chart_wlrank"
-        android:layout_width="331dp"
-        android:layout_height="373dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.934"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.997" />
+        app:rippleColor="#1C2E2C" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,6 +7,7 @@ import com.example.taintedscore.R
 @Entity(tableName = "received_data")
 class SearchResponseData {
 
+
     @PrimaryKey
     var objectid: String = "0"
     var yearpublished: Int = 0

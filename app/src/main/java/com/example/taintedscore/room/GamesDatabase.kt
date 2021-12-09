@@ -9,7 +9,7 @@ import com.example.taintedscore.data.SearchResponseData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(version = 1, entities = [SearchResponseData::class])
+@Database(version = 2, entities = [SearchResponseData::class])
 public abstract class GamesDatabase : RoomDatabase() {
 
     abstract fun gamesDao(): GamesDao
