@@ -11,7 +11,16 @@ class SearchResponseData {
     var objectid: String = "0"
     var yearpublished: Int = 0
     var name: String = "Wrong name"
-    var totalGames: Int = 0
+    var totalWins: Int = 0
+    var totalLoses: Int = 0
+    var totalGames: Int = totalLoses + totalWins
+    var totalWinrate: Int = 0
+
+    fun setWinrate() {
+        if (totalGames >= 1) {
+            totalWinrate = totalWins / totalGames
+        }
+    }
 
     override fun toString(): String {
         return " Id = $objectid\n Name = $name\n Year Published = $yearpublished"
@@ -19,10 +28,9 @@ class SearchResponseData {
 
     fun toScoreData(): ScoreData {
         val scoreData = ScoreData(
-            R.drawable.pic6107853, name, "0"
+            R.drawable.pic6107853, name, totalWins.toString(), totalGames
         )
         return scoreData
-
     }
 }
 

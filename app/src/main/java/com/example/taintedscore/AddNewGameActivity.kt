@@ -8,21 +8,24 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taintedscore.adapter.SearchAdapter
-import com.example.taintedscore.data.ReverseClickHolder
 import com.example.taintedscore.data.SearchResponseData
 import com.example.taintedscore.models.ExtViewModel
 import com.example.taintedscore.models.SearchResponseViewModel
+import com.example.taintedscore.room.GamesApplication
+
 
 class AddNewGameActivity : AppCompatActivity(), SearchAdapter.OnItemClickListener {
 
     private val minCharLength: Int = 2
     private val extViewModel = viewModels<ExtViewModel>()
-    lateinit var foundGamesViewModel: SearchResponseViewModel
-
+    private val gamesViewModel: SearchResponseViewModel by viewModels {
+        SearchResponseViewModel.SearchResponseViewModelFactory((application as GamesApplication).repository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +36,19 @@ class AddNewGameActivity : AppCompatActivity(), SearchAdapter.OnItemClickListene
 
         val searchGame = findViewById<EditText>(R.id.searchBGG)
         val recyclerSearchRes: RecyclerView = findViewById(R.id.recycler_for_search)
-        foundGamesViewModel= ViewModelProvider(this)
-            .get(SearchResponseViewModel::class.java)
-        //вот тут где-то падаем
 
         extViewModel.value.searchLiveData.observe(this) {
             val recedList: List<SearchResponseData> = it
-            //Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show()
-
+            //Toast.makeText(this, it.toString(), Toast.LENGTH_LONG).show() test tool
             recyclerSearchRes.layoutManager = LinearLayoutManager(this@AddNewGameActivity)
             recyclerSearchRes.adapter = SearchAdapter(recedList, this)
+            recyclerSearchRes.addItemDecoration(
+                DividerItemDecoration(
+                    applicationContext,
+                    DividerItemDecoration.VERTICAL
+                )
+            )
+            recyclerSearchRes.itemAnimator = DefaultItemAnimator();
         }
 
         extViewModel.value.errorLiveData.observe(this) {
@@ -59,20 +65,20 @@ class AddNewGameActivity : AppCompatActivity(), SearchAdapter.OnItemClickListene
     }
 
     override fun onItemClick(position: Int) {
-        insertDataToDatabase()
+        //insertDataToDatabase()
+
         val toPropGameActivity = Intent(
             this,
             GameListActivity::class.java
         )
         startActivity(toPropGameActivity)
-        //ДБ берём отсюда
     }
-
-    private fun insertDataToDatabase() {
+/*
+  private fun insertDataToDatabase() {
         val insertionData = ReverseClickHolder().retriveData()
-        foundGamesViewModel.addGame(insertionData)
+        gamesViewModel.insert(insertionData)
         Toast.makeText(this, insertionData.toString(), Toast.LENGTH_LONG).show()
-    }
+    }*/
 
 }
 

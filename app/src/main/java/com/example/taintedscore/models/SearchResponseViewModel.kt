@@ -1,28 +1,30 @@
 package com.example.taintedscore.models
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.taintedscore.data.SearchResponseData
-import com.example.taintedscore.room.GamesDatabase
 import com.example.taintedscore.room.GamesRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class SearchResponseViewModel(application: Application) : AndroidViewModel(application) {
-    private val readAllData: LiveData<List<SearchResponseData>>
-    private val repository: GamesRepository
+class SearchResponseViewModel(private val repository: GamesRepository) : ViewModel() {
+    val readAllData: LiveData<List<SearchResponseData>> = repository.readAllData.asLiveData()
 
-     init {
-        val gamesDao = GamesDatabase.getDatabase(application).gamesDao()
-        repository = GamesRepository(gamesDao)
-        readAllData = repository.readAllData
-    }
-
-    fun addGame(searchResponseData: SearchResponseData) {
+    fun insert(searchResponseData: SearchResponseData) {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.addGame(searchResponseData)
+            repository.insert(searchResponseData)
         }
     }
+
+    class SearchResponseViewModelFactory(private val repository: GamesRepository) :
+        ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(SearchResponseViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return SearchResponseViewModel(repository) as T
+            }
+            throw IllegalArgumentException("Unknown VM class")
+        }
+
+    }
 }
+

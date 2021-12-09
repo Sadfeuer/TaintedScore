@@ -1,12 +1,9 @@
 package com.example.taintedscore.data
 
-class ReverseClickHolder() {
-    lateinit var neededData: SearchResponseData
-    fun pullData(onClickData: SearchResponseData) {
-        neededData = onClickData
-    }
+class ReverseClickHolder(srchData: SearchResponseData) {
+    var innerSrchData: SearchResponseData = srchData
 
     fun retriveData(): SearchResponseData {
-        return neededData
+        return innerSrchData
     }
 }

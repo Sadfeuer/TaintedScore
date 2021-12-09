@@ -9,7 +9,9 @@ import com.example.taintedscore.R
 import com.example.taintedscore.data.ReverseClickHolder
 import com.example.taintedscore.data.SearchResponseData
 
+
 class SearchAdapter(
+
     private val receivedList: List<SearchResponseData>,
     private val listener: SearchAdapter.OnItemClickListener
     ) : RecyclerView.Adapter<SearchAdapter.GViewHolder>() {
@@ -27,7 +29,7 @@ class SearchAdapter(
             if (position != RecyclerView.NO_POSITION) {
                 listener.onItemClick(position)
                 val sRdata = receivedList[position]
-                ReverseClickHolder().neededData=sRdata
+                ReverseClickHolder(sRdata)
 
             }
         }
@@ -49,4 +51,5 @@ class SearchAdapter(
 
     override fun getItemCount() = receivedList.size
 }
+
 

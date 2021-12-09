@@ -9,5 +9,6 @@
     <string name="tGames">Games: </string>
     <string name="tPlays">Plays: </string>
     <string name="fab_content_desc">Add new game</string>
-    <string name="AddPlay">Add a play</string>
+    <string name="AddPlay">Add a win</string>
+    <string name="AddLoss">Add a loss</string>
 </resources>
