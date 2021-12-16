@@ -4,6 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".adapter.PropGameActivity">
+    tools:context=".PropGameActivity">
+
+    <TextView
+        android:id="@+id/title_of_activity"
+        android:layout_width="127dp"
+        android:layout_height="54dp"
+        android:text="Ankh"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <ImageView
+        android:id="@+id/imageViewCover"
+        android:layout_width="184dp"
+        android:layout_height="181dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174"
+        app:srcCompat="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/addWinButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="123dp"
+        android:layout_height="57dp"
+        android:background="?attr/selectableItemBackground"
+        android:minWidth="0dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/AddPlay"
+        android:textColor="@color/purple_500"
+        app:backgroundTint="#151717"
+        app:layout_constraintBottom_toBottomOf="@+id/addLossButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewCover"
+        app:layout_constraintVertical_bias="1.0"
+        app:rippleColor="#1C2E2C" />
+
+    <Button
+        android:id="@+id/addLossButton"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="123dp"
+        android:layout_height="57dp"
+        android:background="?attr/selectableItemBackground"
+        android:minWidth="0dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:text="@string/AddLoss"
+        android:textColor="@color/purple_500"
+        app:backgroundTint="#151717"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.934"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rippleColor="#1C2E2C" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

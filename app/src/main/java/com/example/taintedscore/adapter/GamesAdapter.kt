@@ -20,8 +20,10 @@ class GamesAdapter(
         View.OnClickListener {
 
         val povName: TextView = itemView.findViewById(R.id.recyclerItemName)
+        val povTotalGames: TextView = itemView.findViewById(R.id.recyclerItemTotalGames)
         val povWinrate: TextView = itemView.findViewById(R.id.recyclerItemWinrate)
         val povImage: ImageView = itemView.findViewById(R.id.imageViewCover)
+
 
         init {
             itemView.setOnClickListener(this)
@@ -51,8 +53,11 @@ class GamesAdapter(
         val currentGame = gamesList[position]
         holder.povImage.setImageResource(currentGame.imageResource)
         holder.povName.text = currentGame.name
-        holder.povWinrate.text = currentGame.winrate
+        holder.povWinrate.text = "Winrate is " + currentGame.winrate
+        holder.povTotalGames.text = "Total games: " + currentGame.totalgames
     }
 
     override fun getItemCount() = gamesList.size
 }
+
+
